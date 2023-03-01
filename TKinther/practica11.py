@@ -1,8 +1,25 @@
 from tkinter import Tk, Button, Frame, messagebox
+#from playsound import playsound
+import threading
+
+#*pista = "C:\Users\JABOW\Downloads\russia-national-anthem-russian-english-lyrics.mp3"
+#def play_30():
+#    thread = threading.Thread(target=playsound, args=("pista"))
+#    thread.start()
+
 
 #funciones
 def mostrarMensajes(): #<las funciones en python van con def
     messagebox.showinfo("Hola gei","Presionaste el boton azul", icon = "error")
+    messagebox.showerror("Error: ", "Todo fallo con exito")
+    print(messagebox.askokcancel("Pregunta:","¿Ella estuvo jugando con tu corazon?"))
+     
+#6.- Funcion agregar botones
+
+def agregar_boton():
+     botonVerde.config(text = "+", bg = "green", fg = "white")   
+     botonNuevo = Button(seccion3, text = "Nuevo")
+     botonNuevo.pack()
 
 #1.- Instanciamos el objeto ventana
 ventana =  Tk()
@@ -10,13 +27,13 @@ ventana.title("Ejemplo de 3 Frames")
 ventana.geometry("600x400")
 
 #2.- agregamos los Frames
-seccion1 = Frame(ventana, bg = "red")
+seccion1 = Frame(ventana, bg = "white")
 seccion1.pack(expand=True, fill='both')
 
-seccion2 = Frame(ventana, bg = "gray")
+seccion2 = Frame(ventana, bg = "blue")
 seccion2.pack(expand=True, fill='both')
 
-seccion3 = Frame(ventana, bg = "pink")
+seccion3 = Frame(ventana, bg = "red")
 seccion3.pack(expand=True, fill='both')
 
 #3.- Agregamos botones
