@@ -1,11 +1,11 @@
 from tkinter import Tk, Button, Frame, messagebox
-#from playsound import playsound
+from playsound import playsound
 import threading
 
-#*pista = "C:\Users\JABOW\Downloads\russia-national-anthem-russian-english-lyrics.mp3"
-#def play_30():
-#    thread = threading.Thread(target=playsound, args=("pista"))
-#    thread.start()
+pista = "russia-national-anthem-russian-english-lyrics.mp3"
+def play_30():
+    thread = threading.Thread(target=playsound, args=("pista"))
+    thread.start()
 
 
 #funciones
