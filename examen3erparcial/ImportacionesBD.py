@@ -4,46 +4,45 @@ import tkinter as tk
 from tkinter import messagebox
 from controladorBDIMPO import *
 
-#controlador = controladorBDIMPO()
+controlador = controladorBDIMPO()
 
-
+#InsertarRegistro
 def ejecutaInsert():
-    controlador.guardarImportacion(varNom.get(), varCor.get(), varCon.get())
-    varNom.set("")
-    varCor.set("")
-    varCon.set("")
+    controlador.guardarImportacion(varMat.get(), varPais.get())
+    varMat.set("")
+    varPais.set("")
     
     
-
+#Consultar x Pais
 def ejecutaSelectU():
-    rsUsuario = controlador.consultarUsuario(varBus.get())
+    rsMateriales = controlador.consultarPais(varPais.get())
 
-    if rsUsuario:
+    if rsMateriales:
         textBus.delete("1.0","end")
        
-        usuario_data = f"Nombre: {rsUsuario[0][1]}\nCorreo: {rsUsuario[0][2]}"
-        textBus.insert(tk.INSERT, usuario_data) 
+        Material_data = f"IDMAT: {rsMateriales[0][1]}"
+        textBus.insert(tk.INSERT, Material_data) 
     
     else:
-        messagebox.showinfo("Ojito", "Usuario no registrado en la BD")
+        messagebox.showinfo("CUIDADO", "Registro no hallado en la BD")
         textBus.delete("1.0","end")
         return
     
-
+#ConsultarTodos
 def ejecutaSelectA():
-    rsUsuarios = controlador.consultarMateriales()
+    rsMateriales = controlador.consultarMateriales()
    
     tree.delete(*tree.get_children())
     # Insertamos los datos en el treeview
-    for usuario in rsUsuarios:
+    for usuario in rsMateriales:
         tree.insert("", tk.END, values=usuario)
     return
 
 
  
-
+#Eliminar Registro
 def ejecutaDelete():
-    controlador.eliminarUsuario(varBuseliminar.get())  
+    controlador.eliminarMaterial(varBuseliminar.get())  
     textBus.delete("1.0","end")
     varBuseliminar.set("")
     return
@@ -52,7 +51,7 @@ def ejecutaDelete():
             
 
 def limpiarCampos():
-    txtNom.delete(0, END)
+  
     txtCor.delete(0, END)
     txtCon.delete(0, END)
     textBus.delete("1.0","end")
@@ -87,14 +86,9 @@ panel.add(pestana5, text="Eliminar Registro")
 
 
 
-titulo1 = Label(pestana1, text="Insertar registro", font=("Arial", 20, "bold"), bg = '#535e57')
+titulo1 = Label(pestana1, text="Insertar registro", font=("Arial", 20, "bold"))
 titulo1.pack(pady=10)
 
-varIDMat = tk.StringVar()
-lblNom = Label(pestana1, text="ID_Material ")
-lblNom.pack(pady=5)
-txtNom = Entry(pestana1, textvariable=varIDMat, width=30)
-txtNom.pack()
 
 varMat = tk.StringVar()
 lblCor = Label(pestana1, text="Material: ")
@@ -105,7 +99,7 @@ txtCor.pack()
 lblCon = Label(pestana1, text="Pais: ")
 lblCon.pack(pady=5)
 varPais = tk.StringVar()
-txtCon = Entry(pestana1, textvariable=varPais, width=30, show="*")
+txtCon = Entry(pestana1, textvariable=varPais, width=30)
 txtCon.pack()
 
 btnGuardar = Button(pestana1, text="Guardar Registro", command=ejecutaInsert, bg="#008CBA", fg="white")
@@ -116,7 +110,7 @@ btnLimpiar.pack(pady=10)
 
 
 # Creamos los elementos para la pestaña 2 (Buscar usuario)
-titulo2= Label(pestana2, text="Buscar x Pais", font=("Arial", 20, "bold"), bg = '#d2f5e0')
+titulo2= Label(pestana2, text="Buscar x Pais", font=("Arial", 20, "bold"))
 titulo2.pack(pady=10)
 
 varBus = tk.StringVar()
@@ -130,7 +124,7 @@ btnBusqueda = Button(pestana2, text="Buscar Pais", command=ejecutaSelectU, bg="#
 btnBusqueda.pack(pady=10)
 
 
-subBus= Label(pestana2, text="IDMaterial: ", font=("Arial", 10, "bold"), bg = '#0c0261')   
+subBus= Label(pestana2, text="IDMaterial: ", font=("Arial", 10, "bold"))   
 subBus.pack()
 
 textBus = Text(pestana2, width=40, height=5)
@@ -138,7 +132,7 @@ textBus.pack(pady=10)
 
 
 
-titulo3 = Label(pestana3, text="Consultar Registros", font=("Arial", 20, "bold"), bg= '#c6c6c5')
+titulo3 = Label(pestana3, text="Consultar Registros", font=("Arial", 20, "bold"))
 titulo3.pack(pady=10)
 
 #Treeview
