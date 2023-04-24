@@ -1,41 +1,50 @@
 
 from Personaje import *
-#1.-Solicitar Datos
-print("")
-print("- Datos Heroe -")
-especieH = input("Escribe el espacie del heroe: ")
+
+# 1. Solicitar datos 
+print("Ingrese los datos del personaje")
+print("##### datos personaje #####")
+especieH = input("Escribe la especie del heroe: ")
 nombreH = input("Escribe el nombre del heroe: ")
 alturaH = float(input("Escribe la altura del heroe: "))
-recargaH = int(input("Cuantas balas recargas al heroe: "))
+recargarH = int(input("Escribe la cantidad de municiones a recargar al heroe: "))
 
 print("")
-print("- Datos Villano -")
+print("##### datos villano #####")
 especieV = input("Escribe la especie del villano: ")
-nombreV = input("Escribe la especie del villano: ")
-AlturaV = float(input("Ecribe la altura del villano: "))
-recargaV = int(input("Cuantas balas recargas al VILLANO: "))
+nombreV = input("Escribe el nombre del villano: ")
+alturaV = float(input("Escribe la altura del villano: "))
+recargarV = int(input("Escribe la cantidad de municiones a recargar al villano: "))
 
-#2.- Crear objeto de clase Persoanje
+# 2. Crear un objeto de la clase Personaje
 heroe = Personaje(especieH, nombreH, alturaH)
-villano = Personaje(especieV, nombreV, AlturaV)
+villano = Personaje(especieV, nombreV, alturaV)
 
-#3. Usar atributos
-#Ejemplo de metodo con set
-#heroe.set()
+
+# 3. Usar atributos y métodos de la clase Personaje
+
+#ejemplo del SET para 1 atributo
+
+heroe.setNombre("pepe pecas")
+
 print("")
-print("- Objeto Heroe -")
-print("El personaje se llama: "+ heroe.get_Nombre())
-print("Pertenece a la especie: "+ heroe.get_Especie())
-print("Y tiene una altura de: "+ str(heroe.get_Altura() ))
+print("##### objeto heroe #####")
+print("El personaje se llama: " + heroe.getNombre())
+print("Pertenece a la especie: " + heroe.getEspecie())
+print("Y tiene una altura de: " + str(heroe.getAltura()))
+
 heroe.correr(True)
-heroe.LanzarGranadas()
-heroe.RecargarArmas(recargaH)
+heroe.lanzarGranadas()
+heroe.recargarArma(recargarH)
+#ejemplo del GET para 1 atributo
+#heroepensar = heroe._Personaje__pensar()
 
 print("")
-print("- Objeto Villano -")
-print("El personaje se llama: "+ villano.get_Nombre())
-print("Pertenece a la especie: "+ villano.get_Especie())
-print("Y tiene una altura de: "+ str(villano.get_Altura() ))
+print("##### objeto villano #####")
+print("El personaje se llama: " + villano.getNombre())
+print("Pertenece a la especie: " + villano.getEspecie())
+print("Y tiene una altura de: " + str(villano.getAltura()))
 
-
-
+villano.correr(False)
+villano.lanzarGranadas()
+villano.recargarArma(recargarV)

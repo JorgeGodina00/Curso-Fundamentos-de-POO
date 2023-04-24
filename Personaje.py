@@ -1,43 +1,44 @@
 class Personaje:
-    
-    #Definimos el constructor de personaje y los encapsulamos
-    def __init__(self, esp,nom,alt):
+    # definimos el constructor del personaje y los encapsulamos
+    def __init__(self, esp, nom, alt):
         self.__especie = esp
         self.__nombre = nom
         self.__altura = alt
-    #Metodos
+
+    # Métodos Personaje
     def correr(self, status):
-        if(status):
-            print("El personaje "+self.__nombre +" esta corriendo")
+        if status:
+            print("El personaje " + self.__nombre + " está corriendo")
         else:
-            print("El persoanje "+self.__nombre +" se detuvo")
-    
-    def LanzarGranadas(self):
-        print("El persoanje "+self.__nombre +" lanzo granadas a ")
-    
-    def RecargarArmas(self, municiones):
+            print("El personaje " + self.__nombre + " se detuvo")
+
+    def lanzarGranadas(self):
+        print("El personaje " + self.__nombre + " lanzó una granada")
+
+    def recargarArma(self, municiones):
         cargador = 10
-        cargador = cargador + municiones
-        print("El arama tiene: "+ str(cargador) + "balas")
-    
+        cargador += municiones
+        print("El arma tiene " + str(cargador) + " balas")
+
     def __pensar(self):
-        print("A veces pienso....")
-    
-    def get_Nombre(self):
-        return self.__nombre
-    
-    def set_Nombre(self, nom):
-        self.__nombre = nom  
+        print("El personaje " + self.__nombre + " está pensando")
         
-    def get_Especie(self):
+    # getters y setters de atributos encapsulados
+    def getNombre(self):
+        return self.__nombre
+
+    def setNombre(self, nom):
+        self.__nombre = nom
+    
+    def getEspecie(self):
         return self.__especie
+
+    def setEspecie(self, esp):
+        self.__especie = esp
     
-    def set_Especie(self, especie):
-        self.__especie = especie
-    
-    def get_Altura(self):
+    def getAltura(self):
         return self.__altura
-    
-    def set_Altura(self, altura):
-        self.__altura = altura      
+
+    def setAltura(self, alt):
+        self.__altura = alt
         
