@@ -29,7 +29,7 @@ class RomanArabicConverter:
             messagebox.showerror("Error", "El número romano contiene combinaciones inválidas")
             return
         
-
+        
         for key in sorted(roman_dict, reverse=True):
             while roman_num[0:len(key)] == key:
                 arabic_num += roman_dict[key]
