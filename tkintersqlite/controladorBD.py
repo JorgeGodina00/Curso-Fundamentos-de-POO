@@ -177,4 +177,6 @@ class controladorBD:
             messagebox.showinfo("Eliminación", "Eliminación exitosa")
             
             return None
+         
+         
 
